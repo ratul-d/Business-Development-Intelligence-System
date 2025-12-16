@@ -1,0 +1,6 @@
+name,title,company,linkedin_url,person_location,company_hq,funding_stage,email,scientific_intent,score,score_breakdown
+Dr Jane Doe,Director of Toxicology,Acme Biotech,https://www.linkedin.com/in/janedoe,"Boston, MA","Cambridge, MA",series_b,jane.doe@acmebiotech.com,False,50,"{'role_fit': 30, 'funding': 20}"
+Dr Michael Chen,Head of Preclinical Safety,Nova Therapeutics,https://www.linkedin.com/in/michaelchen,"San Francisco, CA","San Francisco, CA",series_a,michael.chen@novatherapeutics.com,False,50,"{'role_fit': 30, 'funding': 20}"
+Dr Sarah Patel,"Senior Scientist, Investigative Toxicology",Helix Pharma,https://www.linkedin.com/in/sarahpatel,"Remote - Austin, TX","Boston, MA",series_b,sarah.patel@helixpharma.com,False,50,"{'role_fit': 30, 'funding': 20}"
+Dr Elena Müller,VP Preclinical Development,Basel BioLabs,https://www.linkedin.com/in/elenamuller,"Basel, Switzerland","Basel, Switzerland",series_b,elena.müller@baselbiolabs.com,False,50,"{'role_fit': 30, 'funding': 20}"
+John Smith,Junior Scientist,EarlyBio,https://www.linkedin.com/in/johnsmith,"Remote - Denver, CO","Denver, CO",seed,john.smith@earlybio.com,False,0,{}
