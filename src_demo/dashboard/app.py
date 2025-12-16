@@ -3,7 +3,7 @@ import pandas as pd
 
 st.title("3D In-Vitro BD Intelligence Dashboard")
 
-df = pd.read_csv("src/data/output/leads_scored.csv")
+df = pd.read_csv("src_demo/data/output/leads_scored.csv")
 
 search = st.text_input("Search")
 if search:

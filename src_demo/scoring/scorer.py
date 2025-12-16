@@ -1,8 +1,8 @@
 import yaml
 
-weights = yaml.safe_load(open("src/config/scoring_weights.yaml"))
-hubs = yaml.safe_load(open("src/config/hubs.yaml"))
-keywords = yaml.safe_load(open("src/config/keywords.yaml"))
+weights = yaml.safe_load(open("src_demo/config/scoring_weights.yaml"))
+hubs = yaml.safe_load(open("src_demo/config/hubs.yaml"))
+keywords = yaml.safe_load(open("src_demo/config/keywords.yaml"))
 
 def score(row):
     score = 0

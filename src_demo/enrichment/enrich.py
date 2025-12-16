@@ -1,8 +1,8 @@
-from src.integrations.apollo import enrich_email, dummy_enrich_email
-from src.integrations.pubmed import has_recent_relevant_publication
+from src_demo.integrations.apollo import enrich_email, dummy_enrich_email
+from src_demo.integrations.pubmed import has_recent_relevant_publication
 import yaml
 
-keywords = yaml.safe_load(open("src/config/keywords.yaml"))
+keywords = yaml.safe_load(open("src_demo/config/keywords.yaml"))
 
 def enrich(row):
     email = dummy_enrich_email(row["name"], row["company"])
