@@ -1,0 +1,23 @@
+import pandas as pd
+
+def identify_from_linkedin(csv_path="src/data/input/clay_leads.csv"):
+    """
+    Clay-exported LinkedIn search results
+    """
+    df = pd.read_csv(csv_path)
+
+    candidates = []
+    for _, row in df.iterrows():
+        candidates.append({
+            "name": row.get("name"),
+            "source": "linkedin",
+            "title": row.get("latest_experience_title"),
+            "affiliation": row.get("latest_experience_company"),
+            "domain": row.get("domain"),
+            "linkedin_url": row.get("url"),
+            "location": row.get("location_name"),
+            "pubmed_id": None,
+            "conference_role": None
+        })
+
+    return candidates
