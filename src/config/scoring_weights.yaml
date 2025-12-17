@@ -1,7 +1,6 @@
 role_fit: 30
 scientific_intent: 40
-funding:
-  series_a: 20
-  series_b: 20
+company_intent: 20
 location_hub: 10
 technographic: 15
+new_hire_bonus: 5

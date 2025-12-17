@@ -1,5 +1,21 @@
-from src.scoring.weights import SCORING_WEIGHTS
 from src.scoring import rules
+import yaml
+
+with open("src/config/scoring_weights.yaml", "r") as f:
+    SCORING_WEIGHTS = yaml.safe_load(f)
+
+REQUIRED_KEYS = {
+    "role_fit",
+    "scientific_intent",
+    "company_intent",
+    "location_hub",
+    "technographic",
+    "new_hire_bonus"
+}
+
+missing = REQUIRED_KEYS - SCORING_WEIGHTS.keys()
+if missing:
+    raise ValueError(f"Missing scoring weights in YAML: {missing}")
 
 def score_lead(row):
     score = 0

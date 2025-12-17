@@ -33,11 +33,11 @@ def enrich_contact_apollo(name, company):
 > since accessing url = "https://api.apollo.io/v1/people/match" is only available in paid plan of apollo
 > hence we use mock function for now
 """
-
+import random
 def enrich_contact_mock(name, company):
-    email = f"{name.lower().replace(' ','.')}@{company.lower().replace(' ','')}.com"
+    domain = "gmail.com" if len(company) > 15 else f"{company.lower().replace(' ', '')}.com"
     return {
-        "email": email,
-        "phone": None,
+        "email": f"{name.lower().replace(' ', '.')}@{domain}",
+        "phone": f"{random.randint(200,999)}-{random.randint(200,999)}-{random.randint(1000,9999)}",
         "contact_source": "mock_apollo"
     }

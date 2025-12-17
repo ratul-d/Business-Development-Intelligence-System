@@ -14,14 +14,48 @@ def run_stage2():
         name = row["name"]
         company = row["raw_affiliations"]
 
-        if row["sources"] == "pubmed":
-            contact = {
-                "email": None,
-                "phone": None,
-                "contact_source": "academic_no_email"
-            }
-        else:
-            contact = enrich_contact_mock(row["name"], row["raw_affiliations"])
+        contact = enrich_contact_apollo(row["name"], row["raw_affiliations"])
+
+        company_data = enrich_company_crunchbase(company)
+        remote_flag = is_remote(
+            str(row["person_location"]),
+            str(company_data.get("company_hq_city"))
+        )
+        tenure = estimate_tenure(str(row["latest_experience_start_date"]))
+
+        has_grant = check_nih_grants(name)
+
+        pubmed_ids = (
+            str(row["pubmed_ids"]).split("; ")
+            if pd.notna(row.get("pubmed_ids"))
+            else []
+        )
+        science = summarize_scientific_activity(pubmed_ids)
+
+        enirched_rows.append({
+            **row,
+            **contact,
+            **company_data,
+            **tenure,
+            **science,
+            "is_remote":remote_flag,
+            "has_nih_grant": has_grant
+
+        })
+
+    out = pd.DataFrame(enirched_rows)
+    out.to_csv("src/data/output/stage2_enriched.csv",index=False)
+    print("Stage 2 Complete.")
+
+def run_stage2_dummy():
+    df = pd.read_csv("src/data/output/stage1_candidates.csv")
+    enirched_rows=[]
+
+    for _,row in df.iterrows():
+        name = row["name"]
+        company = row["raw_affiliations"]
+
+        contact = enrich_contact_mock(row["name"], row["raw_affiliations"])
 
         company_data = enrich_company_mock(company)
         remote_flag = is_remote(
