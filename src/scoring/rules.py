@@ -1,8 +1,22 @@
+import yaml
+
+with open("src/config/keywords.yaml", "r") as f:
+    KEYWORDS = yaml.safe_load(f)
+
+with open("src/config/hubs.yaml", "r") as f:
+    HUBS_CONFIG = yaml.safe_load(f)
+
+ROLE_KEYWORDS = set(
+    k.lower() for k in KEYWORDS.get("role_keywords", [])
+)
+
+HUB_CITIES = {
+    city.lower() for city in HUBS_CONFIG.get("hubs", [])
+}
+
 def role_fit(title: str):
     text = f"{title}".lower()
-    return any(k in text for k in [
-        "toxicology", "safety", "hepatic", "preclinical", "3d"
-    ])
+    return any(k in text for k in ROLE_KEYWORDS)
 
 def scientific_intent(active_researcher: None):
     return active_researcher is True
@@ -22,10 +36,7 @@ def technographic_signal(active_researcher: bool, has_grant: bool):
 def location_hub(company_hq_city: str):
     if not company_hq_city or not isinstance(company_hq_city, str):
         return False
-    return company_hq_city.lower() in {
-        "boston", "cambridge", "san francisco",
-        "basel", "london", "oxford"
-    }
+    return company_hq_city.lower() in HUB_CITIES
 
 def new_hire(new_hire_flag):
     return new_hire_flag is True

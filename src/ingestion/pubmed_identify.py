@@ -1,20 +1,19 @@
 from Bio import Entrez
 from datetime import datetime
-import os
+import os, yaml
 
 Entrez.email = os.getenv("NCBI_EMAIL", "your_email@example.com")
 
-KEYWORDS = [
-    "drug-induced liver injury",
-    "liver toxicity",
-    "hepatic",
-    "3d cell",
-    "organ-on-chip"
+with open("src/config/keywords.yaml", "r") as f:
+    KEYWORDS_CONFIG = yaml.safe_load(f)
+
+SCIENTIFIC_KEYWORDS = [
+    k.lower() for k in KEYWORDS_CONFIG.get("scientific_keywords", [])
 ]
 
 def identify_from_pubmed(max_results=50):
     year_cutoff = datetime.now().year - 2
-    query = " OR ".join(KEYWORDS)
+    query = " OR ".join(SCIENTIFIC_KEYWORDS)
 
     handle = Entrez.esearch(db="pubmed",term=query, retmax=max_results)
     ids = Entrez.read(handle)["IdList"]

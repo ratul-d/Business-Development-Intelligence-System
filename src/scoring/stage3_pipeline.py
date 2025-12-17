@@ -2,7 +2,7 @@ import pandas as pd
 from src.scoring.scorer import score_lead
 
 def run_stage3():
-    df = pd.read_csv("src/data/stage2_enriched.csv")
+    df = pd.read_csv("src/data/output/stage2_enriched.csv")
 
     scored_rows = []
 
