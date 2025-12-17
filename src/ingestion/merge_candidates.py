@@ -30,7 +30,7 @@ def merge_candidates(all_candidates):
                 "raw_titles": set(),
                 "raw_affiliations": set(),
                 "domains": set(),
-                "locations": set(),
+                "person_location": set(),
                 "linkedin_url": None,
                 "latest_experience_start_date": None,
                 "pubmed_ids": set(),
@@ -55,7 +55,7 @@ def merge_candidates(all_candidates):
 
         loc = clean_str(c.get("location"))
         if loc:
-            entry["locations"].add(loc)
+            entry["person_location"].add(loc)
 
         if c.get("linkedin_url") and not entry["linkedin_url"]:
             entry["linkedin_url"] = c["linkedin_url"]

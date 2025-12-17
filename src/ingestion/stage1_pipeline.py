@@ -19,7 +19,7 @@ def run_stage1():
             "raw_titles": "; ".join(c["raw_titles"]),
             "raw_affiliations": "; ".join(c["raw_affiliations"]),
             "domains": "; ".join(c["domains"]),
-            "locations": "; ".join(c["locations"]),
+            "person_location": "; ".join(c["person_location"]),
             "linkedin_url": c["linkedin_url"],
             "latest_experience_start_date": c["latest_experience_start_date"],
             "pubmed_ids": "; ".join(c["pubmed_ids"]),
