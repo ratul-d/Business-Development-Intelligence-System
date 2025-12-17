@@ -45,6 +45,7 @@ def identify_from_pubmed(max_results=50):
                 "domain": None,
                 "linkedin_url": None,
                 "location": None,
+                "latest_experience_start_date": None,
                 "pubmed_id": ids,
                 "conference_role": None
             })

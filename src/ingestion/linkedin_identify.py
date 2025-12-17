@@ -16,6 +16,7 @@ def identify_from_linkedin(csv_path="src/data/input/clay_leads.csv"):
             "domain": row.get("domain"),
             "linkedin_url": row.get("url"),
             "location": row.get("location_name"),
+            "latest_experience_start_date": row.get("latest_experience_start_date"),
             "pubmed_id": None,
             "conference_role": None
         })

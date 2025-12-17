@@ -21,6 +21,7 @@ def run_stage1():
             "domains": "; ".join(c["domains"]),
             "locations": "; ".join(c["locations"]),
             "linkedin_url": c["linkedin_url"],
+            "latest_experience_start_date": c["latest_experience_start_date"],
             "pubmed_ids": "; ".join(c["pubmed_ids"]),
             "conference_roles": "; ".join(c["conference_roles"]),
             "evidence_count": len(c["sources"])

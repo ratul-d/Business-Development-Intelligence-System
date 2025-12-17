@@ -32,6 +32,7 @@ def merge_candidates(all_candidates):
                 "domains": set(),
                 "locations": set(),
                 "linkedin_url": None,
+                "latest_experience_start_date": None,
                 "pubmed_ids": set(),
                 "conference_roles": set()
             }
@@ -58,6 +59,15 @@ def merge_candidates(all_candidates):
 
         if c.get("linkedin_url") and not entry["linkedin_url"]:
             entry["linkedin_url"] = c["linkedin_url"]
+
+        start_date = clean_str(c.get("latest_experience_start_date"))
+        if start_date:
+            if not entry["latest_experience_start_date"]:
+                entry["latest_experience_start_date"] = start_date
+            else:
+                entry["latest_experience_start_date"] = min(
+                    entry["latest_experience_start_date"], start_date
+                )
 
         if c.get("pubmed_id"):
             if isinstance(c["pubmed_id"], (list, set)):
