@@ -7,7 +7,7 @@ from src.enrichment.scientific_profile import summarize_scientific_activity
 from src.enrichment.tenure import estimate_tenure
 
 def run_stage2():
-    df = pd.read_csv("src/data/stage1_candidates.csv")
+    df = pd.read_csv("src/data/output/stage1_candidates.csv")
     enirched_rows=[]
 
     for _,row in df.iterrows():
@@ -51,7 +51,7 @@ def run_stage2():
         })
 
     out = pd.DataFrame(enirched_rows)
-    out.to_csv("src/data/stage2_enriched.csv",index=False)
+    out.to_csv("src/data/output/stage2_enriched.csv",index=False)
     print("Stage 2 Complete.")
 
 if __name__ == "__main__":

@@ -28,7 +28,7 @@ def run_stage1():
         })
 
     df = pd.DataFrame(rows)
-    df.to_csv("src/data/stage1_candidates.csv",index=False)
+    df.to_csv("src/data/output/stage1_candidates.csv",index=False)
     print("Stage 1 Complete.")
 
 if __name__ == "__main__":

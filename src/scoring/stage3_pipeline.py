@@ -17,7 +17,7 @@ def run_stage3():
 
     out = pd.DataFrame(scored_rows)
     out = out.sort_values("propensity_score", ascending=False)
-    out.to_csv("src/data/stage3_ranked_leads.csv", index=False)
+    out.to_csv("src/data/output/stage3_ranked_leads.csv", index=False)
 
     print("Stage 3 Complete.")
 
