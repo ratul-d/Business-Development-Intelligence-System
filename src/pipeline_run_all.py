@@ -10,11 +10,11 @@ def log(msg: str):
     """Simple timestamped logger"""
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}")
 
-def run_dummy():
+def run_dummy(max_pubmed_leads):
     log("Starting Lead Generation and Ranking Pipeline with Dummy Enrichment (NO PAID APIs)")
     try:
         log("Stage 1: Identification Started")
-        run_stage1()
+        run_stage1(max_pubmed_leads)
 
         log("Stage 2: Enrichment Started")
         run_stage2_dummy()
@@ -28,11 +28,11 @@ def run_dummy():
         traceback.print_exc()
         sys.exit(1)
 
-def run_actual():
+def run_actual(max_pubmed_leads):
     log("Starting Lead Generation and Ranking Pipeline")
     try:
         log("Stage 1: Identification Started")
-        run_stage1()
+        run_stage1(max_pubmed_leads)
 
         log("Stage 2: Enrichment Started")
         run_stage2()
@@ -57,14 +57,20 @@ def main():
         default="dummy",
         help="Run pipeline in dummy mode (no paid APIs) or actual mode"
     )
+    parser.add_argument(
+        "--max-pubmed-leads",
+        type=int,
+        default=50,
+        help="Maximum number of PubMed-derived candidates to fetch"
+    )
 
     args = parser.parse_args()
 
     try:
         if args.mode == "dummy":
-            run_dummy()
+            run_dummy(args.max_pubmed_leads)
         else:
-            run_actual()
+            run_actual(args.max_pubmed_leads)
     except Exception:
         log("Pipeline failed")
         traceback.print_exc()

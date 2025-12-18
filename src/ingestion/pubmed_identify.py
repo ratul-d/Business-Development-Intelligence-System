@@ -11,7 +11,7 @@ SCIENTIFIC_KEYWORDS = [
     k.lower() for k in KEYWORDS_CONFIG.get("scientific_keywords", [])
 ]
 
-def identify_from_pubmed(max_results=26):
+def identify_from_pubmed(max_results=25,max_people=10):
     year_cutoff = datetime.now().year - 2
     query = " OR ".join(SCIENTIFIC_KEYWORDS)
 
@@ -36,6 +36,8 @@ def identify_from_pubmed(max_results=26):
         affiliations = [l.replace("AD  - ", "") for l in lines if l.startswith("AD  - ")]
 
         for author in authors:
+            if len(candidates) >= max_people:
+                return candidates
             candidates.append({
                 "name": author,
                 "source": "pubmed",

@@ -85,7 +85,6 @@ Convert identified candidates into **BD-ready profiles** by adding contactabilit
 
 * Company HQ location
 * Funding stage (Seed, Series A, Series B, Public, Grant-funded)
-* Academic vs industry classification
 
 ### Scientific & Academic
 
@@ -146,6 +145,25 @@ This allows:
 
 ---
 
+## Project Structure
+
+```
+src/
+├── config/
+│   ├── keywords.yaml
+│   ├── hubs.yaml
+│   └── scoring_weights.yaml
+│
+├── ingestion/              # Stage 1
+├── enrichment/             # Stage 2
+├── scoring/                # Stage 3
+├── pipeline_run_all.py     # Orchestration
+├── dashboard/              # Streamlit UI
+├── data/                   # CSV outputs
+```
+
+---
+
 ## Pipeline Orchestration
 
 The system provides a **single CLI entry point** that runs all stages in order.
@@ -158,8 +176,8 @@ The system provides a **single CLI entry point** that runs all stages in order.
 ### Command
 
 ```bash
-python -m src.pipeline.run_all --mode dummy
-python -m src.pipeline.run_all --mode actual
+python -m src.pipeline_run_all --mode dummy
+python -m src.pipeline_run_all --mode actual
 ```
 
 Each stage can also be run independently for debugging or development.
@@ -195,25 +213,6 @@ The final output is a **Streamlit web dashboard** designed for business users.
 
 ```bash
 streamlit run src/dashboard/app.py
-```
-
----
-
-## Project Structure
-
-```
-src/
-├── config/
-│   ├── keywords.yaml
-│   ├── hubs.yaml
-│   └── scoring_weights.yaml
-│
-├── ingestion/              # Stage 1
-├── enrichment/             # Stage 2
-├── scoring/                # Stage 3
-├── pipeline_run_all.py     # Orchestration
-├── dashboard/              # Streamlit UI
-├── data/                   # CSV outputs
 ```
 
 ---

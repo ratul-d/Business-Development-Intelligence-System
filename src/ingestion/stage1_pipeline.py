@@ -3,9 +3,9 @@ from src.ingestion.linkedin_identify import identify_from_linkedin
 from src.ingestion.pubmed_identify import identify_from_pubmed
 from src.ingestion.merge_candidates import merge_candidates
 
-def run_stage1():
+def run_stage1(max_pubmed_leads):
     linkedin = identify_from_linkedin()
-    pubmed = identify_from_pubmed()
+    pubmed = identify_from_pubmed(max_people=max_pubmed_leads)
 
     allcandidates = linkedin + pubmed
     merged = merge_candidates(allcandidates)

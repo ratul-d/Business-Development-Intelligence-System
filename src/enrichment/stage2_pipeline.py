@@ -89,4 +89,4 @@ def run_stage2_dummy():
     print("Stage 2 Complete.")
 
 if __name__ == "__main__":
-    run_stage2()
+    run_stage2_dummy()
