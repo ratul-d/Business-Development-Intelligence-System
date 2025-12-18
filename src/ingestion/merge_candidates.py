@@ -1,4 +1,36 @@
+import re
 from difflib import SequenceMatcher
+
+TITLE_PREFIXES = [
+    "dr", "prof", "professor", "mr", "ms", "mrs"
+]
+
+def normalize_name(name: str) -> str:
+    """
+    Normalize person names for matching.
+    - Lowercase
+    - Remove titles (Dr., Prof.)
+    - Remove punctuation
+    - Collapse whitespace
+    """
+    if not name:
+        return ""
+
+    name = name.lower()
+
+    # remove titles
+    tokens = name.split()
+    tokens = [t for t in tokens if t.strip(".") not in TITLE_PREFIXES]
+
+    name = " ".join(tokens)
+
+    # remove punctuation
+    name = re.sub(r"[^a-z\s]", "", name)
+
+    # collapse spaces
+    name = re.sub(r"\s+", " ", name).strip()
+
+    return name
 
 def similar(a,b):
     return SequenceMatcher(None, a.lower(), b.lower()).ratio()
@@ -15,13 +47,22 @@ def merge_candidates(all_candidates):
     for c in all_candidates:
         name = c["name"]
 
+        norm_name = normalize_name(name)
+
         matched_key = None
         for existing in merged:
-            if similar(existing,name) > 0.85:
+            if similar(normalize_name(existing),norm_name) > 0.85:
                 matched_key = existing
                 break
 
-        key = matched_key if matched_key else name
+        if matched_key:
+            if len(name) > len(matched_key):
+                merged[name] = merged.pop(matched_key)
+                key = name
+            else:
+                key = matched_key
+        else:
+            key = name
 
         if key not in merged:
             merged[key] = {

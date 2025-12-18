@@ -2,12 +2,14 @@ import pandas as pd
 from src.ingestion.linkedin_identify import identify_from_linkedin
 from src.ingestion.pubmed_identify import identify_from_pubmed
 from src.ingestion.merge_candidates import merge_candidates
+from src.ingestion.conference_identify import identify_from_conference
 
-def run_stage1(max_pubmed_leads):
+def run_stage1(max_pubmed_leads,max_conference_leads):
     linkedin = identify_from_linkedin()
     pubmed = identify_from_pubmed(max_people=max_pubmed_leads)
+    conference = identify_from_conference(max_people=max_conference_leads)
 
-    allcandidates = linkedin + pubmed
+    allcandidates = linkedin + pubmed + conference
     merged = merge_candidates(allcandidates)
 
 
@@ -32,4 +34,4 @@ def run_stage1(max_pubmed_leads):
     print("Stage 1 Complete.")
 
 if __name__ == "__main__":
-    run_stage1()
+    run_stage1(7,7)

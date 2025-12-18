@@ -31,7 +31,7 @@ with st.expander("Data Pipeline Controls", expanded=False):
         with pubmed_col:
             max_pubmed_leads = st.number_input(
                 label="Maximum PubMed candidates to fetch",
-                min_value=5,
+                min_value=1,
                 max_value=50,
                 value=10,
                 step=5,
@@ -41,7 +41,7 @@ with st.expander("Data Pipeline Controls", expanded=False):
         with conf_col:
             max_conference_leads = st.number_input(
                 label="Maximum Conference candidates to fetch",
-                min_value=5,
+                min_value=1,
                 max_value=50,
                 value=10,
                 step=5,
@@ -61,7 +61,9 @@ with st.expander("Data Pipeline Controls", expanded=False):
                         "--mode",
                         "dummy",
                         "--max-pubmed-leads",
-                        str(max_pubmed_leads)
+                        str(max_pubmed_leads),
+                        "--max-conference-leads",
+                        str(max_conference_leads),
                     ],
                     capture_output=True,
                     text=True
@@ -159,9 +161,9 @@ with col1:
         "ranked_leads.csv",
         "text/csv"
     )
-
+st.divider()
 # Summary
-st.subheader("Summary")
+st.subheader("Summary based on Propensity Score")
 
 hot = df[df["Probability"] >= 80].shape[0]
 warm = df[(df["Probability"] >= 50) & (df["Probability"] < 80)].shape[0]

@@ -10,11 +10,11 @@ def log(msg: str):
     """Simple timestamped logger"""
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}")
 
-def run_dummy(max_pubmed_leads):
+def run_dummy(max_pubmed_leads,max_conference_leads):
     log("Starting Lead Generation and Ranking Pipeline with Dummy Enrichment (NO PAID APIs)")
     try:
         log("Stage 1: Identification Started")
-        run_stage1(max_pubmed_leads)
+        run_stage1(max_pubmed_leads,max_conference_leads)
 
         log("Stage 2: Enrichment Started")
         run_stage2_dummy()
@@ -28,11 +28,11 @@ def run_dummy(max_pubmed_leads):
         traceback.print_exc()
         sys.exit(1)
 
-def run_actual(max_pubmed_leads):
+def run_actual(max_pubmed_leads,max_conference_leads):
     log("Starting Lead Generation and Ranking Pipeline")
     try:
         log("Stage 1: Identification Started")
-        run_stage1(max_pubmed_leads)
+        run_stage1(max_pubmed_leads,max_conference_leads)
 
         log("Stage 2: Enrichment Started")
         run_stage2()
@@ -63,14 +63,20 @@ def main():
         default=50,
         help="Maximum number of PubMed-derived candidates to fetch"
     )
+    parser.add_argument(
+        "--max-conference-leads",
+        type=int,
+        default=50,
+        help="Maximum number of conference paper candidates to fetch"
+    )
 
     args = parser.parse_args()
 
     try:
         if args.mode == "dummy":
-            run_dummy(args.max_pubmed_leads)
+            run_dummy(args.max_pubmed_leads,args.max_conference_leads)
         else:
-            run_actual(args.max_pubmed_leads)
+            run_actual(args.max_pubmed_leads,args.max_conference_leads)
     except Exception:
         log("Pipeline failed")
         traceback.print_exc()
