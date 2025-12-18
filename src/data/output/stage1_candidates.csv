@@ -1,0 +1,21 @@
+name,sources,raw_titles,raw_affiliations,domains,person_location,linkedin_url,latest_experience_start_date,pubmed_ids,conference_roles,evidence_count
+Dr Alan Brooks,linkedin,Director of Safety Pharmacology,NovaCura Biosciences,novacura.bio,"San Diego, CA",https://www.linkedin.com/in/alanbrooks,2019-04-08,,,1
+Priya Nair,linkedin,Associate Director Toxicology,Aurora Therapeutics,aurorathera.com,"San Jose, CA",https://www.linkedin.com/in/priyanair,2020-11-02,,,1
+Thomas Keller,linkedin,Head of Nonclinical Safety,Valence Pharma,valencepharma.com,"Basel, Switzerland",https://www.linkedin.com/in/thomaskeller,2018-06-18,,,1
+Dr Rebecca Lin,linkedin,Principal Scientist Toxicology,HepatoGenix,hepatogenix.com,"South San Francisco, CA",https://www.linkedin.com/in/rebeccalin,2021-02-15,,,1
+Markus Vogel,linkedin,VP Preclinical Safety,Alpine BioLabs,alpinebiolabs.eu,"Munich, Germany",https://www.linkedin.com/in/markusvogel,2017-09-01,,,1
+Ananya Iyer,linkedin,Senior Toxicologist,NeuroAxis Therapeutics,neuroaxis.ai,"Bangalore, India",https://www.linkedin.com/in/ananyaiyer,2022-05-23,,,1
+Dr Kevin Morales,linkedin,Executive Director Toxicology,Orionis Pharma,orionispharma.com,"Princeton, NJ",https://www.linkedin.com/in/kevinmorales,2016-01-11,,,1
+Laura Bennett,linkedin,Head of Investigative Toxicology,Redwood Biotech,redwoodbio.com,"Redwood City, CA",https://www.linkedin.com/in/laurabennett,2019-10-07,,,1
+Hiroshi Tanaka,linkedin,Director Preclinical Safety,Sakura Therapeutics,sakurathera.jp,"Tokyo, Japan",https://www.linkedin.com/in/hiroshitanaka,2018-12-03,,,1
+Daniel O’Connor,linkedin,Senior Director Safety Assessment,BrightPath Pharma,brightpathpharma.com,"Dublin, Ireland",https://www.linkedin.com/in/danieloconnor,2020-08-19,,,1
+Wang L,pubmed,,"Department of Gynecologic Oncology, Affiliated Cancer Hospital of Zhengzhou",,,,,41407578; 41407857; 41407856; 41407779; 41407940; 41408472; 41407820; 41407869; 41408266; 41408051; 41407458; 41407819; 41407966; 41407525; 41408431; 41407340; 41407510; 41407318; 41407461; 41407851; 41407795; 41407697; 41408312; 41407613; 41408382,,1
+Xie L,pubmed,,"Department of Gynecologic Oncology, Affiliated Cancer Hospital of Zhengzhou",,,,,41407578; 41407857; 41407856; 41407779; 41407940; 41408472; 41407820; 41407869; 41408266; 41408051; 41407458; 41407819; 41407966; 41407525; 41408431; 41407340; 41407510; 41407318; 41407461; 41407851; 41407795; 41407697; 41408312; 41407613; 41408382,,1
+Li Q,pubmed,,"Department of Gynecologic Oncology, Affiliated Cancer Hospital of Zhengzhou",,,,,41407578; 41407857; 41407856; 41407779; 41407940; 41408472; 41407820; 41407869; 41408266; 41408051; 41407458; 41407819; 41407966; 41407525; 41408431; 41407340; 41407510; 41407318; 41407461; 41407851; 41407795; 41407697; 41408312; 41407613; 41408382,,1
+Shen Y,pubmed,,"Department of Gynecologic Oncology, Affiliated Cancer Hospital of Zhengzhou",,,,,41407578; 41407857; 41407856; 41407779; 41407940; 41408472; 41407820; 41407869; 41408266; 41408051; 41407458; 41407819; 41407966; 41407525; 41408431; 41407340; 41407510; 41407318; 41407461; 41407851; 41407795; 41407697; 41408312; 41407613; 41408382,,1
+Wang H,pubmed,,"Department of Gynecologic Oncology, Affiliated Cancer Hospital of Zhengzhou",,,,,41407578; 41407857; 41407856; 41407779; 41407940; 41408472; 41407820; 41407869; 41408266; 41408051; 41407458; 41407819; 41407966; 41407525; 41408431; 41407340; 41407510; 41407318; 41407461; 41407851; 41407795; 41407697; 41408312; 41407613; 41408382,,1
+Dr. Laura McKenzie,conference,Director of Developmental Toxicology,GSK,gsk.com,"Research Triangle Park, NC",,,PMID:37291844,SOT 2024 Invited Speaker,1
+Dr. Anton Petrov,conference,Head of Regulatory Toxicology,Novartis,novartis.com,"Basel, Switzerland",,,,EUROTOX 2023 Panelist,1
+Dr. Melissa Grant,conference,"Senior Principal Scientist, DILI",Bristol Myers Squibb,bms.com,"New Brunswick, NJ",,,PMID:36922411,SOT 2023 Platform Presenter,1
+Dr. Wei Zhang,conference,"Director, Translational Safety Sciences",AstraZeneca,astrazeneca.com,"Cambridge, United Kingdom",,,,AACR 2024 Workshop Leader,1
+Dr. Carlos Mendes,conference,Head of Nonclinical Risk Assessment,Sanofi,sanofi.com,"Paris, France",,,PMID:36155409,SOT 2024 Poster Judge,1
