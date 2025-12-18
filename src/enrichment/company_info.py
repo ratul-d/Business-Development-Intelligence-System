@@ -52,61 +52,68 @@ def enrich_company_crunchbase(company_name):
 
 def enrich_company_mock(company_name):
     mock_db = {
-        # ===== BIOTECH / PHARMA =====
-        "Acme Biotech": {
-            "company_hq_city": "Boston",
+        # ===== BIOTECH / PHARMA (LINKEDIN SOURCED) =====
+
+        "NovaCura Biosciences": {
+            "company_hq_city": "San Diego",
             "company_hq_country": "USA",
             "funding_stage": "Series B"
         },
-        "OncoThera": {
-            "company_hq_city": "Cambridge",
+
+        "Aurora Therapeutics": {
+            "company_hq_city": "San Jose",
             "company_hq_country": "USA",
             "funding_stage": "Series A"
         },
-        "NeoLiver Therapeutics": {
-            "company_hq_city": "San Francisco",
+
+        "Valence Pharma": {
+            "company_hq_city": "Basel",
+            "company_hq_country": "Switzerland",
+            "funding_stage": "Private"
+        },
+
+        "HepatoGenix": {
+            "company_hq_city": "South San Francisco",
             "company_hq_country": "USA",
             "funding_stage": "Series B"
         },
-        "Helix Pharma": {
-            "company_hq_city": "Cambridge",
-            "company_hq_country": "Switzerland",
-            "funding_stage": "Public"
+
+        "Alpine BioLabs": {
+            "company_hq_city": "Munich",
+            "company_hq_country": "Germany",
+            "funding_stage": "Series A"
         },
-        "TinyBio": {
-            "company_hq_city": "Austin",
-            "company_hq_country": "USA",
+
+        "NeuroAxis Therapeutics": {
+            "company_hq_city": "Bangalore",
+            "company_hq_country": "India",
             "funding_stage": "Seed"
         },
-        "Livera Biosciences": {
-            "company_hq_city": "Oxford",
-            "company_hq_country": "United Kingdom",
-            "funding_stage": "Series A"
+
+        "Orionis Pharma": {
+            "company_hq_city": "Princeton",
+            "company_hq_country": "USA",
+            "funding_stage": "Public"
         },
 
-        # ===== ACADEMIC / HOSPITAL =====
-        "Guangdong Provincial Key Laboratory of Gastroenterology": {
-            "company_hq_city": "Guangzhou",
-            "company_hq_country": "China",
-            "funding_stage": "Grant-funded"
-        },
-        "Tongji Hospital": {
-            "company_hq_city": "Wuhan",
-            "company_hq_country": "China",
-            "funding_stage": "Grant-funded"
-        },
-        "Balikesir University": {
-            "company_hq_city": "Balikesir",
-            "company_hq_country": "Turkey",
-            "funding_stage": "Grant-funded"
-        },
-        "Cleveland Clinic": {
-            "company_hq_city": "Cleveland",
+        "Redwood Biotech": {
+            "company_hq_city": "Redwood City",
             "company_hq_country": "USA",
-            "funding_stage": "Grant-funded"
+            "funding_stage": "Series C"
+        },
+
+        "Sakura Therapeutics": {
+            "company_hq_city": "Tokyo",
+            "company_hq_country": "Japan",
+            "funding_stage": "Private"
+        },
+
+        "BrightPath Pharma": {
+            "company_hq_city": "Dublin",
+            "company_hq_country": "Ireland",
+            "funding_stage": "Series B"
         }
     }
-
 
     data = mock_db.get(company_name, {})
 
