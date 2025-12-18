@@ -1,10 +1,11 @@
 import pandas as pd
 
-def identify_from_linkedin(csv_path="src/data/input/clay_leads.csv"):
+def identify_from_linkedin(csv_path="src/data/input/clay_leads.csv", max_people=10):
     """
     Clay-exported LinkedIn search results
     """
     df = pd.read_csv(csv_path)
+    df = df.head(max_people)
 
     candidates = []
     for _, row in df.iterrows():

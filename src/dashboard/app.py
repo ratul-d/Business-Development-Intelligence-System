@@ -23,59 +23,70 @@ st.divider()
 st.markdown("### Pipeline Controls")
 
 with st.expander("Data Pipeline Controls", expanded=False):
-    left, _ = st.columns([1, 1])
 
-    with left:
-        pubmed_col, conf_col = st.columns(2)
+    # --- One row, three side-by-side inputs ---
+    linkedin_col, pubmed_col, conf_col = st.columns(3)
 
-        with pubmed_col:
-            max_pubmed_leads = st.number_input(
-                label="Maximum PubMed candidates to fetch",
-                min_value=1,
-                max_value=50,
-                value=10,
-                step=5,
-                help="Upper limit on PubMed candidates (not guaranteed)."
+    with linkedin_col:
+        max_linkedin_leads = st.number_input(
+            label="Max LinkedIn leads",
+            min_value=1,
+            max_value=100,
+            value=10,
+            step=5,
+            help="Upper limit on LinkedIn leads pulled from Clay export."
+        )
+
+    with pubmed_col:
+        max_pubmed_leads = st.number_input(
+            label="Max PubMed candidates",
+            min_value=1,
+            max_value=50,
+            value=5,
+            step=5,
+            help="Upper limit on PubMed candidates (not guaranteed)."
+        )
+
+    with conf_col:
+        max_conference_leads = st.number_input(
+            label="Max Conference candidates",
+            min_value=1,
+            max_value=50,
+            value=5,
+            step=5,
+            help="Upper limit on conference leads (not guaranteed)."
+        )
+
+    if st.button(
+        "Run Pipeline (Dummy Mode – No Paid APIs)",
+        use_container_width=True
+    ):
+        with st.spinner("Running pipeline in dummy mode..."):
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    "-m",
+                    "src.pipeline_run_all",
+                    "--mode",
+                    "dummy",
+                    "--max-linkedin-leads",
+                    str(max_linkedin_leads),
+                    "--max-pubmed-leads",
+                    str(max_pubmed_leads),
+                    "--max-conference-leads",
+                    str(max_conference_leads),
+                ],
+                capture_output=True,
+                text=True
             )
 
-        with conf_col:
-            max_conference_leads = st.number_input(
-                label="Maximum Conference candidates to fetch",
-                min_value=1,
-                max_value=50,
-                value=10,
-                step=5,
-                help="Upper limit on conference leads (not guaranteed)."
-            )
-
-    run_col1, run_col2 = st.columns(2)
-
-    with run_col1:
-        if st.button("Run Pipeline (Dummy Mode - No Paid APIs)", use_container_width=True):
-            with st.spinner("Running pipeline in dummy mode..."):
-                result = subprocess.run(
-                    [
-                        sys.executable,
-                        "-m",
-                        "src.pipeline_run_all",
-                        "--mode",
-                        "dummy",
-                        "--max-pubmed-leads",
-                        str(max_pubmed_leads),
-                        "--max-conference-leads",
-                        str(max_conference_leads),
-                    ],
-                    capture_output=True,
-                    text=True
-                )
-
-            if result.returncode == 0:
-                st.success("Pipeline completed successfully.")
-                st.cache_data.clear()
-                st.rerun()
-            else:
-                st.error("Pipeline failed.")
-                st.code(result.stderr)
+        if result.returncode == 0:
+            st.success("Pipeline completed successfully.")
+            st.cache_data.clear()
+            st.rerun()
+        else:
+            st.error("Pipeline failed.")
+            st.code(result.stderr)
 
 DATA_PATH="src/data/output/stage3_ranked_leads.csv"
 

@@ -11,7 +11,7 @@ SCIENTIFIC_KEYWORDS = [
     k.lower() for k in KEYWORDS_CONFIG.get("scientific_keywords", [])
 ]
 
-def identify_from_pubmed(max_results=25,max_people=10):
+def identify_from_pubmed(max_results=25,max_people=5):
     year_cutoff = datetime.now().year - 2
     query = " OR ".join(SCIENTIFIC_KEYWORDS)
 

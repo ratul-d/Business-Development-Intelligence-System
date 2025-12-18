@@ -177,10 +177,16 @@ The system provides a **single CLI entry point** that runs all stages in order.
 
 ```bash
 python -m src.pipeline_run_all --mode dummy
-python -m src.pipeline_run_all --mode actual
+python -m src.pipeline_run_all --mode actual --max-linkedin-leads <value> --max-pubmed-leads <value> --max-conference-leads <value>
 ```
 
 Each stage can also be run independently for debugging or development.
+
+```bash
+python -m src.ingestion.stage1_pipeline
+python -m src.enrichment.stage2_pipeline
+python -m src.scoring.stage3_pipeline
+```
 
 ---
 
